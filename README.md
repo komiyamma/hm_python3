@@ -6,3 +6,5 @@
 ![Python 3.9.10](https://img.shields.io/badge/Python-v3.9.10-6479ff.svg?logo=python&logoColor=white)
 
 秀丸マクロで「Python3と秀丸マクロをシームレスに近い形で利用する」ためのライブラリとなります。
+
+- [詳細URL](https://秀丸マクロ.net/?page=nobu_tool_hm_python3)
