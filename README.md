@@ -5,6 +5,6 @@
 ![Hidemaru 8.73](https://img.shields.io/badge/Hidemaru-v8.73-6479ff.svg)
 ![Python 3.9.10](https://img.shields.io/badge/Python-v3.9.10-6479ff.svg?logo=python&logoColor=white)
 
-秀丸マクロで「Python3と秀丸マクロをシームレスに近い形で利用する」ためのライブラリとなります。
+秀丸マクロで「Python3と秀丸マクロをシームレスに近い形で利用する」ためのコンポーネントとなります。
 
 [https://秀丸マクロ.net/?page=nobu_tool_hm_python3](https://秀丸マクロ.net/?page=nobu_tool_hm_python3)
