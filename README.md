@@ -7,4 +7,4 @@
 
 秀丸マクロで「Python3と秀丸マクロをシームレスに近い形で利用する」ためのライブラリとなります。
 
-- [詳細URL](https://秀丸マクロ.net/?page=nobu_tool_hm_python3)
+[https://秀丸マクロ.net/?page=nobu_tool_hm_python3](https://秀丸マクロ.net/?page=nobu_tool_hm_python3)
