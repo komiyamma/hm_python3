@@ -162,6 +162,7 @@ wstring CHidemaruExeExport::GetTotalText() {
 			GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 			return text;
 		}
+		GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 	}
 	return L"";
 }
@@ -177,6 +178,7 @@ wstring CHidemaruExeExport::GetSelectedText() {
 			GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 			return text;
 		}
+		GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 	}
 	return L"";
 }
@@ -196,6 +198,7 @@ wstring CHidemaruExeExport::GetLineText(int lineno) {
 			GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 			return text;
 		}
+		GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 	}
 	return L"";
 }
@@ -260,6 +263,7 @@ wstring CHidemaruExeExport::LoadFileUnicode(wstring filename, int nHmEncode, UIN
 				*success = true;
 				return text;
 			}
+			GlobalFree(hGlobal); // Œ³‚Ì‚Í‰ð•ú
 		}
 	}
 
