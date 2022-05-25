@@ -190,6 +190,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="exception_translator.cpp" />
     <ClCompile Include="hidemaruexe_export.cpp" />
+    <ClCompile Include="hm_original_decode_mapfunc.cpp" />
     <ClCompile Include="hm_original_encode_map.cpp" />
     <ClCompile Include="hm_original_encode_mapfunc.cpp" />
     <ClCompile Include="output_debugstream.cpp" />

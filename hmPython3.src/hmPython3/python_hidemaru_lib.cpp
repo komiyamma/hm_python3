@@ -879,6 +879,20 @@ namespace Hidemaru {
 	}
 
 	std::string ExplorerPane_GetCurrentDir() {
+
+		// ÇøÇ·ÇÒÇ∆ä÷êîÇ™Ç†ÇÈéûÇæÇØ
+		if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+			HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+			if (CHidemaruExeExport::HmExplorerPane_GetCurrentDir) {
+				BYTE* byte_result = CHidemaruExeExport::HmExplorerPane_GetCurrentDir(hHidemaruWindow);
+				wstring wszReturn = DecodeOriginalEncodeVector(byte_result);
+				string utf8_dirname = utf16_to_utf8(wszReturn);
+				py::str py_dirname = py::str(utf8_dirname);
+				return py_dirname;
+			}
+		}
+
+		/*
 		if (CHidemaruExeExport::HmExplorerPane_GetCurrentDir) {
 			if (Macro_IsExecuting()) {
 				py::object ret = Macro_GetVar(R"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetCurrentDir", hidemaruhandle(0)))RAW");
@@ -890,11 +904,26 @@ namespace Hidemaru {
 				return message;
 			}
 		}
+		*/
 
 		return "";
 	}
 
 	std::string ExplorerPane_GetProject() {
+		// ÇøÇ·ÇÒÇ∆ä÷êîÇ™Ç†ÇÈéûÇæÇØ
+		if (CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle) {
+			HWND hHidemaruWindow = CHidemaruExeExport::Hidemaru_GetCurrentWindowHandle();
+			if (CHidemaruExeExport::HmExplorerPane_GetProject) {
+				BYTE* byte_result = CHidemaruExeExport::HmExplorerPane_GetProject(hHidemaruWindow);
+
+				wstring wszReturn = DecodeOriginalEncodeVector(byte_result);
+				string utf8_projectname = utf16_to_utf8(wszReturn);
+				py::str py_projectname = py::str(utf8_projectname);
+				return py_projectname;
+			}
+		}
+
+		/*
 		if (CHidemaruExeExport::HmExplorerPane_GetProject) {
 			if (Macro_IsExecuting()) {
 				py::object ret = Macro_GetVar(R"RAW(dllfuncstr(loaddll("HmExplorerPane"), "GetProject", hidemaruhandle(0)))RAW");
@@ -906,6 +935,7 @@ namespace Hidemaru {
 				return message;
 			}
 		}
+		*/
 
 		return "";
 	}
