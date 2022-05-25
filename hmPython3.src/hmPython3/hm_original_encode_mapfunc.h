@@ -9,3 +9,4 @@ std::vector<BYTE> EncodeWStringToOriginalEncodeVector(std::wstring original_stri
 
 // 秀丸から秀丸独自のStarユニコードで渡ってきたもののDecode
 std::wstring DecodeOriginalEncodeVector(BYTE *original_encode_string);
+
