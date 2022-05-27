@@ -193,6 +193,7 @@
     <ClCompile Include="hm_original_decode_mapfunc.cpp" />
     <ClCompile Include="hm_original_encode_map.cpp" />
     <ClCompile Include="hm_original_encode_mapfunc.cpp" />
+    <ClCompile Include="hm_original_encode_mapfunc2.cpp" />
     <ClCompile Include="output_debugstream.cpp" />
     <ClCompile Include="python_engine_path.cpp" />
     <ClCompile Include="python_hidemaru_lib.cpp" />

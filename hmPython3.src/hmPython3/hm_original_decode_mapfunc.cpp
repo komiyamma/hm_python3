@@ -30,16 +30,17 @@ std::wstring DecodeOriginalEncodeVector(BYTE *original_encode_string) {
 
 		// 一時バッファー用
 		string tmp_buffer = "";
-		int len = str_original_encode.size();
+		int len = (int)strlen(pstr);
 
 		int lastcheckindex = len - sizeof(DWORD); // IsSTARTUNI_inline には 4バイト必要
 		if (lastcheckindex < 0) {
 			lastcheckindex = 0;
 		}
-		for (int i = 0; i < (int)strlen(pstr); i++) {
+
+		for (int i = 0; i < len; i++) {
 			if (i <= lastcheckindex) {
 				DWORD* pStarUni = (DWORD*)(&pstr[i]);
-				if (IsSTARTUNI_inline(*pStarUni)) {
+				if (pstr[i] == '\x1A' && IsSTARTUNI_inline(*pStarUni)) {
 					if (tmp_buffer.length() > 0) {
 						result += cp932_to_utf16(tmp_buffer);
 						tmp_buffer.clear();
