@@ -566,11 +566,13 @@ namespace Hidemaru {
 		wstring utf16_expression = utf16_funcname + L" " + arg_varname_list + L";\n";
 
 		BOOL success = CHidemaruExeExport::EvalMacro(utf16_expression);
+		string utf8_varname = utf16_to_utf8(L"result");
+		int result = py::int_(Macro_GetVar(utf8_varname));
 		py::list args;
 		ClearMacroVarAndUpdateArgs(varname_list, args, value_args);
 
 		if (success) {
-			return py::make_tuple(success, "", "", args);
+			return py::make_tuple(result, "", "", args);
 		}
 		else {
 			OutputDebugStream(L"マクロの実行に失敗しました。\n");

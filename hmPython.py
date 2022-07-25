@@ -101,7 +101,7 @@ class _TEdit:
             return None
         else:
             return filepath
-        
+
     # 編集中のファイルのパスを返す。ファイル名が決まってなければNoneを返す。
     FilePath = property(__GetFilePath)
 
@@ -201,16 +201,16 @@ class _TMacro:
                         modify_list = [int(e) for e in arg]
                         value_list.append(tuple(modify_list))
                         type_list.append('array_int')
-                        
+
                 else:
                     value_list.append(str(arg))
                     type_list.append('str')
-            
+
             res, msg, errmsg, args = hidemaru.macro.do_statement(statement_name, tuple(value_list), tuple(type_list))
             ret = _TMacro._TStatementResult(res, msg, errmsg, args)
-            
+
             return ret
-            
+
     class _TAsFunction:
         """
         秀丸マクロ関連のうち、括弧があり値が返る秀丸組み込みの関数のラップを表すクラス
@@ -231,10 +231,10 @@ class _TMacro:
                 else:
                     value_list.append(str(arg))
                     type_list.append('str')
-            
+
             res, msg, errmsg, args = hidemaru.macro.do_function(function_name, tuple(value_list), tuple(type_list))
             ret = _TMacro._TFunctionResult(res, msg, errmsg, args)
-            
+
             return ret
 
     #--------------------------------------------------
@@ -282,7 +282,7 @@ class _TMacro:
             self.Result = Result
             self.Message = Message
             self.Args = tuple(Args)
-            if Result >= 1:
+            if ErrorMsg == "":
                 self.Error = None
             else:
                 self.Error = RuntimeError(ErrorMsg)
@@ -323,7 +323,7 @@ class _TOutputPane:
     # アウトプット枠への出力
     def Output(self, obj):
         return hidemaru.outputpane.output(obj)
-            
+
     # アウトプット枠情報の一時退避
     def Push(self):
         return hidemaru.outputpane.push()

@@ -98,9 +98,6 @@
     <ClCompile Include="hm_original_decode_mapfunc.cpp">
       <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
     </ClCompile>
-    <ClCompile Include="hm_original_encode_mapfunc2.cpp">
-      <Filter>秀丸独自のChar渡しでのUnicode扱い</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="self_dll_info.h">
