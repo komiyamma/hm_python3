@@ -566,8 +566,14 @@ namespace Hidemaru {
 		wstring utf16_expression = utf16_funcname + L" " + arg_varname_list + L";\n";
 
 		BOOL success = CHidemaruExeExport::EvalMacro(utf16_expression);
-		string utf8_varname = utf16_to_utf8(L"result");
-		int result = py::int_(Macro_GetVar(utf8_varname));
+		int result = 0;
+		try {
+			string utf8_varname = utf16_to_utf8(L"result");
+			result = py::int_(Macro_GetVar(utf8_varname));
+		}
+		catch (exception e) {
+			OutputDebugStream(L"result‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B\n");
+		}
 		py::list args;
 		ClearMacroVarAndUpdateArgs(varname_list, args, value_args);
 
