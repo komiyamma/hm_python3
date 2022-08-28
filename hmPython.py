@@ -739,7 +739,6 @@ def getcolormarker(*args): return _method_proxy("getcolormarker", "fs", *args);
 def getfilehist(*args): return _method_proxy("getfilehist", "fs", *args);
 def getpathhist(*args): return _method_proxy("getpathhist", "fs", *args);
 def getreplacehist(*args): return _method_proxy("getreplacehist", "fs", *args);
-def getresultex(*args): return _method_proxy("getresultex", "fs", *args);
 def getsearchhist(*args): return _method_proxy("getsearchhist", "fs", *args);
 def gettagsfile(*args): return _method_proxy("gettagsfile", "fs", *args);
 def gettitle(*args): return _method_proxy("gettitle", "fs", *args);
@@ -785,15 +784,12 @@ def getregbinary(*args): return _method_proxy("getregbinary", "fs", *args);
 def getregstr(*args): return _method_proxy("getregstr", "fs", *args);
 def enumregkey(*args): return _method_proxy("enumregkey", "fs", *args);
 def enumregvalue(*args): return _method_proxy("enumregvalue", "fs", *args);
-def getconfig(*args): return _method_proxy("getconfig", "fs", *args);
 def gettabstop(*args): return _method_proxy("gettabstop", "fs", *args);
 def getstaticvariable(*args): return _method_proxy("getstaticvariable", "fs", *args);
 def getclipboard(*args): return _method_proxy("getclipboard", "fs", *args);
-def geteventparam(*args): return _method_proxy("geteventparam", "fs", *args);
 def dllfuncstr(*args): return _method_proxy("dllfuncstr", "fs", *args);
 def dllfuncstrw(*args): return _method_proxy("dllfuncstrw", "fs", *args);
 def loaddllfile(*args): return _method_proxy("loaddllfile", "fs", *args);
-# def member_rstr(*args): return _method_proxy("member", "fs", *args);
 
 def refreshdatetime(*args): return _method_proxy("refreshdatetime", "st", *args);
 def newfile(*args): return _method_proxy("newfile", "st", *args);
@@ -1190,3 +1186,47 @@ def addclipboard(*args): return _method_proxy("addclipboard", "st1s", *args);
 def replacedialog(*args): return _method_proxy("replacedialog", "st1s2s", *args);
 def replacedown(*args): return _method_proxy("replacedown", "st1s2s", *args);
 def replaceup(*args): return _method_proxy("replaceup", "st1s2s", *args);
+
+# 返り値の型が分岐するもの
+def getresultex(*args):
+    if args[0] == -1:
+        eval_ret = hm.Macro.Eval(r'''$__temp_getresultex__ = getresultex(-1);''');
+        func_ret = hm.Macro.Var["$__temp_getresultex__"];
+        hm.Macro.Var["$__temp_getresultex__"] = "";
+        return func_ret
+    else:
+        return _method_proxy("getresultex", "fn", *args);
+
+def geteventparam(*args):
+    if event() == 9 and args[0] == 0:
+        eval_ret = hm.Macro.Eval(r'''$__temp_geteventparam__ = geteventparam(0);''');
+        func_ret = hm.Macro.Var["$__geteventparam__"];
+        hm.Macro.Var["$__temp_geteventparam__"] = "";
+        return func_ret
+    else:
+        return _method_proxy("getresultex", "fn", *args);
+
+def getconfig(*args):
+    hm.Macro.Var["$__getconfig_arg0__"] = args[0];
+    eval_ret = hm.Macro.Eval(r'''$__temp_getconfig__ = getconfig($__getconfig_arg0__);''');
+    func_ret = hm.Macro.Var["$__temp_getconfig__"];
+    hm.Macro.Var["$__temp_getconfig__"] = "";
+    hm.Macro.Var["$__getconfig_arg0__"] = "";
+    return func_ret
+
+def member_rnum(*args):
+    hm.Macro.Var["$__member_rnum_arg0__"] = args[0];
+    eval_ret = hm.Macro.Eval(r'''#__temp_member_rnum__ = member($__member_rnum_arg0__);''');
+    func_ret = hm.Macro.Var["#__temp_member_rnum__"];
+    hm.Macro.Var["#__temp_member_rnum__"];
+    hm.Macro.Var["$__member_rnum_arg0__"] = "";
+    return func_ret
+
+def member_rstr(*args):
+    hm.Macro.Var["$__member_rstr_arg0__"] = args[0];
+    eval_ret = hm.Macro.Eval(r'''$__temp_member_rstr__ = member($__member_rstr_arg0__);''');
+    func_ret = hm.Macro.Var["$__temp_member_rstr__"];
+    hm.Macro.Var["$__temp_member_rstr__"] = "";
+    hm.Macro.Var["$__member_rstr_arg0__"] = "";
+    return func_ret
+
