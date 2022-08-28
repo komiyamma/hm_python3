@@ -433,6 +433,12 @@ def _method_proxy(name, t, *args):
             return hm.Macro.Var[name]
         elif (count > 0):
             return hm.Macro.Function(name, *args).Result
+    elif t == "fsn":
+        count = len(args)
+        if (count == 0):
+            return hm.Macro.Var[name]
+        elif (count > 0):
+            return hm.Macro.Function(name, *args).Result
     elif t=="fn1s":
         list_args = list(args)
         if len(list_args) >= 1:
@@ -1163,7 +1169,7 @@ def keepobject(*args): return _method_proxy("keepobject", "st", *args);
 def menuarray(*args): return menu(*(args[0]));
 
 # 配列展開
-def mousemenuarray(*args):  return mousemenu(*(args[0]));
+def mousemenuarray(*args): return mousemenu(*(args[0]));
 
 
 def message(*args): return _method_proxy("message", "fn1s2s", *args);
@@ -1188,45 +1194,139 @@ def replacedown(*args): return _method_proxy("replacedown", "st1s2s", *args);
 def replaceup(*args): return _method_proxy("replaceup", "st1s2s", *args);
 
 # 返り値の型が分岐するもの
-def getresultex(*args):
-    if args[0] == -1:
-        eval_ret = hm.Macro.Eval(r'''$__temp_getresultex__ = getresultex(-1);''');
-        func_ret = hm.Macro.Var["$__temp_getresultex__"];
-        hm.Macro.Var["$__temp_getresultex__"] = "";
+class _GetResultExFunction:
+
+    def __call__(self, *args):
+        return _method_proxy("getresultex", "fsn", *args);
+
+    def rnum(self, *args):
+        hm.Macro.Var["#__getresultex_rnum_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''#__temp_getresultex_rnum__ = getresultex(#__getresultex_rnum_arg0__);''');
+        func_ret = hm.Macro.Var["#__temp_getresultex_rnum__"];
+        hm.Macro.Var["#__temp_getresultex_rnum__"];
+        hm.Macro.Var["#__getresultex_rnum_arg0__"] = "";
         return func_ret
-    else:
-        return _method_proxy("getresultex", "fn", *args);
-
-def geteventparam(*args):
-    if event() == 9 and args[0] == 0:
-        eval_ret = hm.Macro.Eval(r'''$__temp_geteventparam__ = geteventparam(0);''');
-        func_ret = hm.Macro.Var["$__geteventparam__"];
-        hm.Macro.Var["$__temp_geteventparam__"] = "";
+        
+    def rstr(self, *args):
+        hm.Macro.Var["#__getresultex_rstr_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''$__temp_getresultex_rstr__ = getresultex(#__getresultex_rstr_arg0__);''');
+        func_ret = hm.Macro.Var["$__temp_getresultex_rstr__"];
+        hm.Macro.Var["$__temp_getresultex_rstr__"] = "";
+        hm.Macro.Var["#__getresultex_rstr_arg0__"] = "";
         return func_ret
-    else:
-        return _method_proxy("getresultex", "fn", *args);
 
-def getconfig(*args):
-    hm.Macro.Var["$__getconfig_arg0__"] = args[0];
-    eval_ret = hm.Macro.Eval(r'''$__temp_getconfig__ = getconfig($__getconfig_arg0__);''');
-    func_ret = hm.Macro.Var["$__temp_getconfig__"];
-    hm.Macro.Var["$__temp_getconfig__"] = "";
-    hm.Macro.Var["$__getconfig_arg0__"] = "";
-    return func_ret
+# getresultex
+getresultex = _GetResultExFunction();
 
-def member_rnum(*args):
-    hm.Macro.Var["$__member_rnum_arg0__"] = args[0];
-    eval_ret = hm.Macro.Eval(r'''#__temp_member_rnum__ = member($__member_rnum_arg0__);''');
-    func_ret = hm.Macro.Var["#__temp_member_rnum__"];
-    hm.Macro.Var["#__temp_member_rnum__"];
-    hm.Macro.Var["$__member_rnum_arg0__"] = "";
-    return func_ret
+# 返り値の型が分岐するもの
+class _GetEventParamFunction:
 
-def member_rstr(*args):
-    hm.Macro.Var["$__member_rstr_arg0__"] = args[0];
-    eval_ret = hm.Macro.Eval(r'''$__temp_member_rstr__ = member($__member_rstr_arg0__);''');
-    func_ret = hm.Macro.Var["$__temp_member_rstr__"];
-    hm.Macro.Var["$__temp_member_rstr__"] = "";
-    hm.Macro.Var["$__member_rstr_arg0__"] = "";
-    return func_ret
+    def __call__(self, *args):
+        return _method_proxy("geteventparam", "fsn", *args);
 
+    def rnum(self, *args):
+        hm.Macro.Var["#__geteventparam_rnum_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''#__temp_geteventparam_rnum__ = geteventparam(#__geteventparam_rnum_arg0__);''');
+        func_ret = hm.Macro.Var["#__temp_geteventparam_rnum__"];
+        hm.Macro.Var["#__temp_geteventparam_rnum__"];
+        hm.Macro.Var["#__geteventparam_rnum_arg0__"] = 0;
+        return func_ret
+        
+    def rstr(self, *args):
+        hm.Macro.Var["#__geteventparam_rstr_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''$__temp_geteventparam_rstr__ = geteventparam(#__geteventparam_rstr_arg0__);''');
+        func_ret = hm.Macro.Var["$__temp_geteventparam_rstr__"];
+        hm.Macro.Var["$__temp_geteventparam_rstr__"] = "";
+        hm.Macro.Var["#__geteventparam_rstr_arg0__"] = "";
+        return func_ret
+
+# geteventparam
+geteventparam = _GetEventParamFunction();
+
+# 返り値の型が分岐するもの
+class _GetConfigFunction:
+
+    def __call__(self, *args):
+        return self.rstr(*args)
+
+    def rnum(self, *args):
+        hm.Macro.Var["$__getconfig_rnum_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''#__temp_getconfig_rnum__ = getconfig($__getconfig_rnum_arg0__);''');
+        func_ret = hm.Macro.Var["#__temp_getconfig_rnum__"];
+        hm.Macro.Var["#__temp_getconfig_rnum__"];
+        hm.Macro.Var["$__getconfig_rnum_arg0__"] = "";
+        return func_ret
+        
+    def rstr(self, *args):
+        hm.Macro.Var["$__getconfig_rstr_arg0__"] = args[0];
+        eval_ret = hm.Macro.Eval(r'''$__temp_getconfig_rstr__ = getconfig($__getconfig_rstr_arg0__);''');
+        func_ret = hm.Macro.Var["$__temp_getconfig_rstr__"];
+        hm.Macro.Var["$__temp_getconfig_rstr__"] = "";
+        hm.Macro.Var["$__getconfig_rstr_arg0__"] = "";
+        return func_ret
+
+# getconfig
+getconfig = _GetConfigFunction();
+
+# 返り値の型が分岐するもの
+class _MemberFunction:
+
+    def __call__(self, *args):
+        return _method_proxy("member", "fsn", *args);
+
+    def rnum(self, *args):
+        arg_name_list = []
+        for i, arg in enumerate(args):
+            # bool か int か float なら 整数にして
+            if type(arg) == type(True) or type(arg) == type(10) or type(arg) == type(10.5):
+                var_name = "#__member_rnum_arg" + str(i) + "__"
+                arg_name_list.append(var_name)
+                hm.Macro.Var[var_name] = int(arg);
+            else:
+                var_name = "$__member_rnum_arg" + str(i) + "__"
+                arg_name_list.append(var_name)
+                hm.Macro.Var[var_name] = str(arg);
+        
+        var_arg_list = ", ".join(arg_name_list)
+        eval_ret = hm.Macro.Eval(r'''#__temp_member_rnum__ = member( ''' + var_arg_list + r''');''');
+        func_ret = hm.Macro.Var["#__temp_member_rnum__"];
+        hm.Macro.Var["#__temp_member_rnum__"] = 0;
+
+        for var_name in arg_name_list:
+            
+            if var_name.startswith('#'):
+                hm.Macro.Var[var_name] = 0;
+            else:
+                hm.Macro.Var[var_name] = "";
+
+        return func_ret
+        
+    def rstr(self, *args):
+        arg_name_list = []
+        for i, arg in enumerate(args):
+            # bool か int か float なら 整数にして
+            if type(arg) == type(True) or type(arg) == type(10) or type(arg) == type(10.5):
+                var_name = "#__member_rstr_arg" + str(i) + "__"
+                arg_name_list.append(var_name)
+                hm.Macro.Var[var_name] = int(arg);
+            else:
+                var_name = "$__member_rstr_arg" + str(i) + "__"
+                arg_name_list.append(var_name)
+                hm.Macro.Var[var_name] = str(arg);
+            
+        var_arg_list = ", ".join(arg_name_list)
+        eval_ret = hm.Macro.Eval(r'''$__temp_member_rstr__ = member( ''' + var_arg_list + r''');''');
+        func_ret = hm.Macro.Var["$__temp_member_rstr__"];
+        hm.Macro.Var["$__temp_member_rstr__"] = "";
+
+        for var_name in arg_name_list:
+            
+            if var_name.startswith('#'):
+                hm.Macro.Var[var_name] = 0;
+            else:
+                hm.Macro.Var[var_name] = "";
+
+        return func_ret
+
+# member
+member = _MemberFunction();
