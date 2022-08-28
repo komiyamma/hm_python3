@@ -1,4 +1,10 @@
-from hmPython import hm
+﻿#-------------------- coding: utf-8 ---------------------------
+# jsmode 関数群の互換ライブラリ
+# Copyright (c) 2017-2022 Akitsugu Komiyama
+# under the Apache License Version 2.0
+#--------------------------------------------------------------
+if "hidemaru" in globals():
+    from hmPython import hm
 
 def _dispatch_method(name, t, *args):
     if t == "fn" or t == "fs":
@@ -385,7 +391,7 @@ def readonlyopenfile(*args): return _dispatch_method("readonlyopenfile", "st", *
 def readonlyloadfile(*args): return _dispatch_method("readonlyloadfile", "st", *args);
 def save(*args): return _dispatch_method("save", "st", *args);
 def savelf(*args): return _dispatch_method("savelf", "st", *args);
-def print(*args): return _dispatch_method("print", "st", *args);
+def print2(*args): return _dispatch_method("print", "st", *args);
 def saveall(*args): return _dispatch_method("saveall", "st", *args);
 def saveupdatedall(*args): return _dispatch_method("saveupdatedall", "st", *args);
 def openbyshell(*args): return _dispatch_method("openbyshell", "st", *args);
