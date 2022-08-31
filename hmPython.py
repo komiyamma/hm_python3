@@ -830,12 +830,7 @@ def INSERTFILE(*args): return _method_proxy("INSERTFILE", "st", *args);
 def OPENFILEPART(*args): return _method_proxy("OPENFILEPART", "st", *args);
 def deletefile(*args): return _method_proxy("deletefile", "st", *args);
 def propertydialog(*args): return _method_proxy("propertydialog", "st", *args);
-# def exit(*args): return _method_proxy("exit", "st", *args);
-# def exitall(*args): return _method_proxy("exitall", "st", *args);
-# def saveexit(*args): return _method_proxy("saveexit", "st", *args);
-# def saveexitall(*args): return _method_proxy("saveexitall", "st", *args);
-# def quit(*args): return _method_proxy("quit", "st", *args);
-# def quitall(*args): return _method_proxy("quitall", "st", *args);
+
 def up(*args): return _method_proxy("up", "st", *args);
 def down(*args): return _method_proxy("down", "st", *args);
 def right(*args): return _method_proxy("right", "st", *args);
@@ -1171,7 +1166,6 @@ def menuarray(*args): return menu(*(args[0]));
 # 配列展開
 def mousemenuarray(*args): return mousemenu(*(args[0]));
 
-
 def message(*args): return _method_proxy("message", "fn1s2s", *args);
 
 def insert(*args): return _method_proxy("insert", "st1s", *args);
@@ -1188,7 +1182,6 @@ def question(*args): return _method_proxy("question", "st1s", *args);
 def setclipboard(*args): return _method_proxy("setclipboard", "st1s", *args);
 def addclipboard(*args): return _method_proxy("addclipboard", "st1s", *args);
 
-
 def replacedialog(*args): return _method_proxy("replacedialog", "st1s2s", *args);
 def replacedown(*args): return _method_proxy("replacedown", "st1s2s", *args);
 def replaceup(*args): return _method_proxy("replaceup", "st1s2s", *args);
@@ -1197,7 +1190,10 @@ def replaceup(*args): return _method_proxy("replaceup", "st1s2s", *args);
 class _GetResultExFunction:
 
     def __call__(self, *args):
-        return _method_proxy("getresultex", "fsn", *args);
+        if (args[0] == -1):
+            return self.rstr(*args)
+        else:
+            return _method_proxy("getresultex", "fsn", *args);
 
     def rnum(self, *args):
         hm.Macro.Var["#__getresultex_rnum_arg0__"] = args[0];
@@ -1222,7 +1218,10 @@ getresultex = _GetResultExFunction();
 class _GetEventParamFunction:
 
     def __call__(self, *args):
-        return _method_proxy("geteventparam", "fsn", *args);
+        if args[0] == 0 and hm.Macro.Var["event"] == 9:
+            return self.rstr(*args)
+        else:
+            return _method_proxy("geteventparam", "fsn", *args);
 
     def rnum(self, *args):
         hm.Macro.Var["#__geteventparam_rnum_arg0__"] = args[0];
@@ -1270,9 +1269,6 @@ getconfig = _GetConfigFunction();
 
 # 返り値の型が分岐するもの
 class _MemberFunction:
-
-    def __call__(self, *args):
-        return _method_proxy("member", "fsn", *args);
 
     def rnum(self, *args):
         arg_name_list = []
