@@ -1,5 +1,5 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 2.0.0.1用 フェイクライブラリ
+# hmPython3 2.0.0.2用 フェイクライブラリ
 # Copyright (c) 2017-2022 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
@@ -656,6 +656,10 @@ def gettitle(*args)->str: return _method_proxy("gettitle", "fs", *args);
 def browsefile(*args)->str: return _method_proxy("browsefile", "fs", *args);
 def quote(*args)->str: return _method_proxy("quote", "fs", *args);
 def strreplace(*args)->str: return _method_proxy("strreplace", "fs", *args);
+# jsmodeには無いがpythonには必要
+def encodeuri(*args)->str: return _method_proxy("encodeuri", "fs", *args);
+def decodeuri(*args)->str: return _method_proxy("decodeuri", "fs", *args);
+
 # ２つの値を返す
 def enumregvalue(*args):
     ret = hm.Macro.Function("enumregvalue", *args)
