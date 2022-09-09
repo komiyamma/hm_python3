@@ -666,8 +666,6 @@ def dllfunc(*args): return _method_proxy("dllfunc", "fn", *args);
 def dllfuncw(*args): return _method_proxy("dllfuncw", "fn", *args);
 def dllfuncexist(*args): return _method_proxy("dllfuncexist", "fn", *args);
 def createobject(*args): return _method_proxy("createobject", "fn", *args);
-def releaseobject(*args): return _method_proxy("releaseobject", "fn", *args);
-# def member_rnum(*args): return _method_proxy("member_rnum", "fn", *args);
 
 def findmarker(*args): return _method_proxy("findmarker", "fs", *args);
 def diff(*args): return _method_proxy("diff", "fs", *args);
@@ -1162,6 +1160,7 @@ def setdlldetachfunc(*args): return _method_proxy("setdlldetachfunc", "st", *arg
 def keepdll(*args): return _method_proxy("keepdll", "st", *args);
 def setcomdetachmethod(*args): return _method_proxy("setcomdetachmethod", "st", *args);
 def keepobject(*args): return _method_proxy("keepobject", "st", *args);
+def releaseobject(*args): return _method_proxy("releaseobject", "st", *args);
 
 # 配列展開
 def menuarray(*args): return menu(*(args[0]));
