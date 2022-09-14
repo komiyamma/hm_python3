@@ -433,6 +433,8 @@ def _method_proxy(name, t, *args):
             return hm.Macro.Var[name]
         elif (count > 0):
             return hm.Macro.Function(name, *args).Result
+    elif t == "fs0":
+        return hm.Macro.Function(name, *args).Result
     elif t == "fsn":
         count = len(args)
         if (count == 0):
@@ -465,6 +467,11 @@ def _method_proxy(name, t, *args):
         if len(list_args) >= 2:
             list_args[1] = str(args[1])
         return hm.Macro.Statement(name, *list_args).Result
+
+
+def gettotaltext(*args): return _method_proxy("gettotaltext", "fs0", *args);
+def getlinetext(*args): return _method_proxy("getlinetext", "fs0", *args);
+def getselectedtext(*args): return _method_proxy("getselectedtext", "fs0", *args);
 
 def result(*args): return _method_proxy("result", "fn", *args);
 def version(*args): return _method_proxy("version", "fn", *args);
@@ -568,6 +575,7 @@ def overwrite(*args):
 def updated(*args): return _method_proxy("updated", "fn", *args);
 def updatecount(*args): return _method_proxy("updatecount", "fn", *args);
 def anyclipboard(*args): return _method_proxy("anyclipboard", "fn", *args);
+def inputstates(*args): return _method_proxy("inputstates", "fn", *args);
 def imestate(*args): return _method_proxy("imestate", "fn", *args);
 def browsemode(*args): return _method_proxy("browsemode", "fn", *args);
 def keypressed(*args): return _method_proxy("keypressed", "fn", *args);
