@@ -1,6 +1,6 @@
 # hmPython3
 
-![hmPython3 v2.0.0](https://img.shields.io/badge/hmPython3-v2.0.0-6479ff.svg)
+![hmPython3 v2.0.1](https://img.shields.io/badge/hmPython3-v2.0.1-6479ff.svg)
 [![Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-blue.svg?style=flat)](LICENSE)
 ![Hidemaru 8.73](https://img.shields.io/badge/Hidemaru-v8.73-6479ff.svg)
 ![Python 3.9.10](https://img.shields.io/badge/Python-v3.9.10-6479ff.svg?logo=python&logoColor=white)
