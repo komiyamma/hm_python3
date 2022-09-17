@@ -1078,6 +1078,7 @@ def browsemodeswitch(*args)->int: return _method_proxy("browsemodeswitch", "st",
 def clist(*args)->int: return _method_proxy("clist", "st", *args);
 def clearupdated(*args)->int: return _method_proxy("clearupdated", "st", *args);
 def refreshtabstop(*args)->int: return _method_proxy("refreshtabstop", "st", *args);
+def refreshtabstop_pause(*args)>int: return _method_proxy("refreshtabstop_pause", "st", *args);
 def refreshtabstop_shrink(*args)->int: return _method_proxy("refreshtabstop_shrink", "st", *args);
 def refreshtabstop_current(*args)->int: return _method_proxy("refreshtabstop_current", "st", *args);
 def autospellcheckswitch(*args)->int: return _method_proxy("autospellcheckswitch", "st", *args);
@@ -1113,6 +1114,7 @@ def runex(*args)->int: return _method_proxy("runex", "st", *args);
 def disabledraw(*args)->int: return _method_proxy("disabledraw", "st", *args);
 def enabledraw(*args)->int: return _method_proxy("enabledraw", "st", *args);
 def disabledraw2(*args)->int: return _method_proxy("disabledraw2", "st", *args);
+def enablebreak(*args)->int: return _method_proxy("enablebreak", "st", *args);
 def disablebreak(*args)->int: return _method_proxy("disablebreak", "st", *args);
 def disableinvert(*args)->int: return _method_proxy("disableinvert", "st", *args);
 def enableinvert(*args)->int: return _method_proxy("enableinvert", "st", *args);

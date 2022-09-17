@@ -1170,6 +1170,7 @@ def browsemodeswitch(*args): return _method_proxy("browsemodeswitch", "st", *arg
 def clist(*args): return _method_proxy("clist", "st", *args);
 def clearupdated(*args): return _method_proxy("clearupdated", "st", *args);
 def refreshtabstop(*args): return _method_proxy("refreshtabstop", "st", *args);
+def refreshtabstop_pause(*args): return _method_proxy("refreshtabstop_pause", "st", *args);
 def refreshtabstop_shrink(*args): return _method_proxy("refreshtabstop_shrink", "st", *args);
 def refreshtabstop_current(*args): return _method_proxy("refreshtabstop_current", "st", *args);
 def autospellcheckswitch(*args): return _method_proxy("autospellcheckswitch", "st", *args);
@@ -1205,6 +1206,7 @@ def runex(*args): return _method_proxy("runex", "st", *args);
 def disabledraw(*args): return _method_proxy("disabledraw", "st", *args);
 def enabledraw(*args): return _method_proxy("enabledraw", "st", *args);
 def disabledraw2(*args): return _method_proxy("disabledraw2", "st", *args);
+def enablebreak(*args): return _method_proxy("enablebreak", "st", *args);
 def disablebreak(*args): return _method_proxy("disablebreak", "st", *args);
 def disableinvert(*args): return _method_proxy("disableinvert", "st", *args);
 def enableinvert(*args): return _method_proxy("enableinvert", "st", *args);
