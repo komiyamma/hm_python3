@@ -714,7 +714,7 @@ def outlinehandle(*args): return _method_proxy("outlinehandle", "fn", *args);
 def outlinesize(*args): return _method_proxy("outlinesize", "fn", *args);
 def outlineitemcount(*args): return _method_proxy("outlineitemcount", "fn", *args);
 def val(*args): return _method_proxy("val", "fn", *args);
-def ascii2(*args): return _method_proxy("ascii", "fn", *args);
+def ascii1(*args): return _method_proxy("ascii", "fn", *args);
 def strlen(*args): return _method_proxy("strlen", "fn", *args);
 def strstr(*args): return _method_proxy("strstr", "fn", *args);
 def strrstr(*args): return _method_proxy("strrstr", "fn", *args);
@@ -885,13 +885,13 @@ def tolower(*args):
         return _method_proxy("tolower", "st", *args)
 
 # 分岐あり
-def filter2(*args):
+def filter1(*args):
     if len(args)>=4:
         return _method_proxy("filter", "fs", *args)
     else:
         return _method_proxy("filter", "st", *args)
 
-def input2(*args): return _method_proxy("input", "fs", *args);
+def input1(*args): return _method_proxy("input", "fs", *args);
 def getinistr(*args): return _method_proxy("getinistr", "fs", *args);
 def getinistrw(*args): return _method_proxy("getinistrw", "fs", *args);
 def getregbinary(*args): return _method_proxy("getregbinary", "fs", *args);
@@ -918,7 +918,7 @@ def readonlyopenfile(*args): return _method_proxy("readonlyopenfile", "st", *arg
 def readonlyloadfile(*args): return _method_proxy("readonlyloadfile", "st", *args);
 def save(*args): return _method_proxy("save", "st", *args);
 def savelf(*args): return _method_proxy("savelf", "st", *args);
-def print2(*args): return _method_proxy("print", "st", *args);
+def print1(*args): return _method_proxy("print", "st", *args);
 def saveall(*args): return _method_proxy("saveall", "st", *args);
 def saveupdatedall(*args): return _method_proxy("saveupdatedall", "st", *args);
 def openbyshell(*args): return _method_proxy("openbyshell", "st", *args);
