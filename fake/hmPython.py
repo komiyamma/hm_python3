@@ -810,7 +810,7 @@ def getstaticvariable(*args)->str: return _method_proxy("getstaticvariable", "fs
 def getclipboard(*args)->str: return _method_proxy("getclipboard", "fs", *args);
 def dllfuncstr(*args)->str: return _method_proxy("dllfuncstr", "fs", *args);
 def dllfuncstrw(*args)->str: return _method_proxy("dllfuncstrw", "fs", *args);
-def loaddllfile(*args)->str: return _method_proxy("loaddllfile", "fs", *args);
+def getloaddllfile(*args)->str: return _method_proxy("getloaddllfile", "fs", *args);
 
 def refreshdatetime(*args)->int: return _method_proxy("refreshdatetime", "st", *args);
 def newfile(*args)->int: return _method_proxy("newfile", "st", *args);
