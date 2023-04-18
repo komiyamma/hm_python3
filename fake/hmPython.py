@@ -776,6 +776,12 @@ def getlinecount(*args):
     ret = hm.Macro.Function("getlinecount", *args)
     return ret.Result, ret.Args[2];
 
+# 分岐あり
+def hidemaruversion(*args):
+    if len(args)>=1 and (type(args[0]) is str):
+        return _method_proxy("hidemaruversion", "st", *args)
+    else:
+        return _method_proxy("hidemaruversion", "fs", *args)
 
 # 分岐あり
 def toupper(*args):
