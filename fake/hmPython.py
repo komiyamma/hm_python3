@@ -1,11 +1,11 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 2.0.1.4用 フェイクライブラリ
+# hmPython3 2.0.2.1用 フェイクライブラリ
 # Copyright (c) 2017-2022 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
 import os
 
-__version__ = 2.014
+__version__ = 2.021
 
 class _TText:
     class _TEncoding:
@@ -498,6 +498,8 @@ def marked(*args): return _method_proxy("marked", "fn", *args);
 def lineupdated(*args): return _method_proxy("lineupdated", "fn", *args);
 def xpixel(*args): return _method_proxy("xpixel", "fn", *args);
 def ypixel(*args): return _method_proxy("ypixel", "fn", *args);
+def xpixel2(*args): return _method_proxy("xpixel2", "fn", *args);
+def ypixel2(*args): return _method_proxy("ypixel2", "fn", *args);
 def prevposx(*args): return _method_proxy("prevposx", "fn", *args);
 def prevposy(*args): return _method_proxy("prevposy", "fn", *args);
 def lastupdatedx(*args): return _method_proxy("lastupdatedx", "fn", *args);
