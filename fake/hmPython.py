@@ -1,11 +1,11 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 2.0.1.2用 フェイクライブラリ
+# hmPython3 2.0.1.4用 フェイクライブラリ
 # Copyright (c) 2017-2022 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
 import os
 
-__version__ = 2.012
+__version__ = 2.014
 
 class _TText:
     class _TEncoding:
