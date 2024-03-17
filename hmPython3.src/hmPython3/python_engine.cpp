@@ -17,6 +17,8 @@ namespace PythonEngine {
 
 	wchar_t szHidemaruFullPath[MAX_PATH] = L"";
 
+	// PyGILState_STATE gstate;
+
 	BOOL IsValid() {
 		return m_isValid;
 	}
@@ -48,6 +50,8 @@ namespace PythonEngine {
 			// 決まり文句
 			py::initialize_interpreter();
 			{
+				// gstate = PyGILState_Ensure();
+				// py::gil_scoped_release guard();
 				//	py::module::import("hidemaru");
 				// キャッシュを作らないためにsysのインポート。
 				py::eval<py::eval_single_statement>("import sys");
@@ -340,8 +344,9 @@ namespace PythonEngine {
 
 			// 破棄
 			try {
+				// PyGILState_Release(gstate);
+				// py::gil_scoped_acquire guard;
 				py::finalize_interpreter();
-
 				// PyMem_RawFree(m_wstr_program);
 			}
 			catch (py::error_already_set& e) {
