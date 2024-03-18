@@ -17,7 +17,7 @@ namespace PythonEngine {
 	int Create();
 	int Initialize();
 	int DoString(wstring utf16_expressoin);
-	int Destroy();
+	int Destroy(int reason);
 
 	intHM_t GetNumVar(wstring utf16_simbol);
 	BOOL SetNumVar(wstring utf16_simbol, intHM_t);

@@ -12,6 +12,9 @@ namespace PythonEngine {
 
 	// エンジンが有効になった
 	BOOL m_isValid = false;
+
+	BOOL m_EngineCreated = false;
+
 	// 秀丸の名前格納
 	wchar_t *m_wstr_program = NULL;
 
@@ -47,22 +50,24 @@ namespace PythonEngine {
 			m_wstr_program = szHidemaruFullPath;
 			Py_SetProgramName(m_wstr_program);
 
-			// 決まり文句
-			py::initialize_interpreter();
-			{
-				// gstate = PyGILState_Ensure();
-				// py::gil_scoped_release guard();
-				//	py::module::import("hidemaru");
-				// キャッシュを作らないためにsysのインポート。
-				py::eval<py::eval_single_statement>("import sys");
-				// 秀丸用のクラスのインポート。他で、これ経由で処理したい場合などに利用する
-				py::eval<py::eval_single_statement>("import hidemaru");
-				// pythonライブラリなどを使用した時にキャッシュを迂闊に作らないように。(そうでないとあちこちにキャッシュが出来る)
-				py::eval<py::eval_single_statement>("sys.dont_write_bytecode = True");
-
-				// メイン辞書読み込み
-				auto global = py::dict(py::module::import("__main__").attr("__dict__"));
+			if (!m_EngineCreated) {
+				// 決まり文句
+				py::initialize_interpreter();
+				m_EngineCreated = true;
 			}
+
+			// gstate = PyGILState_Ensure();
+			// py::gil_scoped_release guard();
+			//	py::module::import("hidemaru");
+			// キャッシュを作らないためにsysのインポート。
+			py::eval<py::eval_single_statement>("import sys");
+			// 秀丸用のクラスのインポート。他で、これ経由で処理したい場合などに利用する
+			py::eval<py::eval_single_statement>("import hidemaru");
+			// pythonライブラリなどを使用した時にキャッシュを迂闊に作らないように。(そうでないとあちこちにキャッシュが出来る)
+			py::eval<py::eval_single_statement>("sys.dont_write_bytecode = True");
+
+			// メイン辞書読み込み
+			auto global = py::dict(py::module::import("__main__").attr("__dict__"));
 #pragma region
 			/*
 			// DestroyScopeの定義
@@ -71,6 +76,7 @@ namespace PythonEngine {
 			"    pass");
 			*/
 #pragma endregion
+
 			// ここまで実行出来たら、エンジンとして有効になったというフラグが立つ
 			m_isValid = TRUE;
 			return TRUE;
@@ -307,7 +313,7 @@ namespace PythonEngine {
 	}
 
 	// エンジンの破棄
-	int Destroy() {
+	int Destroy(int reason) {
 
 		// 有効でないならば、即終了
 		if (!IsValid()) {
@@ -346,7 +352,19 @@ namespace PythonEngine {
 			try {
 				// PyGILState_Release(gstate);
 				// py::gil_scoped_acquire guard;
-				py::finalize_interpreter();
+				auto global = py::dict(py::module::import("__main__").attr("__dict__"));
+				auto local = py::dict();
+
+				global.clear();
+				local.clear();
+
+				// プロセスが閉じたが、dllが生きているなら
+				if (reason == 3) {
+					py::finalize_interpreter();
+					m_EngineCreated = false;
+				}
+
+
 				// PyMem_RawFree(m_wstr_program);
 			}
 			catch (py::error_already_set& e) {

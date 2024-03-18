@@ -1,5 +1,5 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 2.0.2.1用 ライブラリ
+# hmPython3 3.0.0.1用 ライブラリ
 # Copyright (c) 2017-2023 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------

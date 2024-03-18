@@ -145,14 +145,14 @@ MACRO_DLL intHM_t DoString(const wchar_t *utf16_expression) {
 }
 
 // エンジンの破棄
-MACRO_DLL intHM_t DestroyScope() {
-	intHM_t r = PythonEngine::Destroy();
+MACRO_DLL intHM_t DestroyScope(int reason) {
+	intHM_t r = PythonEngine::Destroy(reason);
 	return r;
 }
 
 
 // マクロでfreedllが呼ばれた時(暗黙の呼び出し含む)、freedllを呼び出していないなら、秀丸の該当プロセスが終了した際に呼ばれる
-MACRO_DLL intHM_t DllDetachFunc_After_Hm866() {
-	return DestroyScope();
+MACRO_DLL intHM_t DllDetachFunc_After_Hm866(int reason) {
+	return DestroyScope(reason);
 }
 
