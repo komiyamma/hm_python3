@@ -1,11 +1,11 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 3.0.0.1用 フェイクライブラリ
-# Copyright (c) 2017-2022 Akitsugu Komiyama
+# hmPython3 3.0.1.1用 フェイクライブラリ
+# Copyright (c) 2017-2024 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
 import os
 
-__version__ = 3.001
+__version__ = 3.011
 
 class _TText:
     class _TEncoding:
@@ -475,6 +475,7 @@ def _method_proxy(name, t, *args):
         return hm.Macro.Statement(name, *list_args).Result
 
 def getlinetext(*args): return _method_proxy("getlinetext", "fs0", *args);
+def getlinetext(*args): return _method_proxy("getlinetext", "fs0", *args);
 def getselectedtext(*args): return _method_proxy("getselectedtext", "fs0", *args);
 
 def result(*args): return _method_proxy("result", "fn", *args);
@@ -767,6 +768,8 @@ def gettitle(*args): return _method_proxy("gettitle", "fs", *args);
 def browsefile(*args): return _method_proxy("browsefile", "fs", *args);
 def quote(*args): return _method_proxy("quote", "fs", *args);
 def strreplace(*args): return _method_proxy("strreplace", "fs", *args);
+def getimecandidate(*args): return _method_proxy("getimecandidate", "fs", *args);
+
 # jsmodeには無いがpythonには必要
 def encodeuri(*args): return _method_proxy("encodeuri", "fs", *args);
 def decodeuri(*args): return _method_proxy("decodeuri", "fs", *args);
@@ -870,6 +873,8 @@ def shiftup(*args): return _method_proxy("shiftup", "st", *args);
 def shiftdown(*args): return _method_proxy("shiftdown", "st", *args);
 def shiftright(*args): return _method_proxy("shiftright", "st", *args);
 def shiftleft(*args): return _method_proxy("shiftleft", "st", *args);
+def shifthome(*args): return _method_proxy("shifthome", "st", *args);
+def shiftend(*args): return _method_proxy("shiftend", "st", *args);
 def gofileend(*args): return _method_proxy("gofileend", "st", *args);
 def gofiletop(*args): return _method_proxy("gofiletop", "st", *args);
 def gokakko(*args): return _method_proxy("gokakko", "st", *args);
