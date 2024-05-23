@@ -58,12 +58,19 @@ namespace Hidemaru {
 
 		wstring utf16_value = utf8_to_utf16(utf8_value);
 		PushStrVar(utf16_value.data());
-		wstring cmd =
-			L"begingroupundo;\n"
-			L"rangeeditout;\n"
-			L"selectall;\n"
-			L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
-			L"endgroupundo;\n";
+		wstring cmd = L"";
+		if (Hidemaru::GetVersion() >= 935.06) {
+			cmd =
+				L"settotaltext dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n";
+		}
+		else {
+			cmd =
+				L"begingroupundo;\n"
+				L"rangeeditout;\n"
+				L"selectall;\n"
+				L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
+				L"endgroupundo;\n";
+		}
 		success = CHidemaruExeExport::EvalMacro(cmd);
 
 		return success;
