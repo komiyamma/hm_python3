@@ -1143,7 +1143,7 @@ def enableerrormsg(*args): return _method_proxy("enableerrormsg", "st", *args);
 def disablehistory(*args): return _method_proxy("disablehistory", "st", *args);
 def sleep(*args): return _method_proxy("sleep", "st", *args);
 def setfloatmode(*args): return _method_proxy("setfloatmode", "st", *args);
-def seterrormode(*args): return _method_proxy("seterrormode", "st", *args);
+def seterrormode(*args): return _method_proxy("seterrormode", "fn", *args);
 def setbackgroundmode(*args): return _method_proxy("setbackgroundmode", "st", *args);
 def inputpos(*args): return _method_proxy("inputpos", "st", *args);
 def menu(*args): return _method_proxy("menu", "st", *args);
