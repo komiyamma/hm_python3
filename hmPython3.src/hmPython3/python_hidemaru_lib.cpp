@@ -66,6 +66,7 @@ namespace Hidemaru {
 		else {
 			cmd =
 				L"begingroupundo;\n"
+				L"rangeeditout;\n"
 				L"selectall;\n"
 				L"insert dllfuncstrw( " + dll_invocant + L"\"PopStrVar\" );\n"
 				L"endgroupundo;\n";
