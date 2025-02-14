@@ -770,6 +770,7 @@ def browsefile(*args): return _method_proxy("browsefile", "fs", *args);
 def quote(*args): return _method_proxy("quote", "fs", *args);
 def strreplace(*args): return _method_proxy("strreplace", "fs", *args);
 def getimecandidate(*args): return _method_proxy("getimecandidate", "fs", *args);
+def getdpi(): return 96;
 
 # jsmodeには無いがpythonには必要
 def encodeuri(*args): return _method_proxy("encodeuri", "fs", *args);
