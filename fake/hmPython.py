@@ -1,11 +1,11 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 3.0.2.1用 フェイクライブラリ
-# Copyright (c) 2017-2024 Akitsugu Komiyama
+# hmPython3 3.0.3.1用 フェイクライブラリ
+# Copyright (c) 2017-2025 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
 import os
 
-__version__ = 3.011
+__version__ = 3.031
 
 class _TText:
     class _TEncoding:
@@ -439,6 +439,8 @@ def _method_proxy(name, t, *args):
             return hm.Macro.Var[name]
         elif (count > 0):
             return hm.Macro.Function(name, *args).Result
+    elif t == "fnfo":
+        return hm.Macro.Function(name, *args).Result
     elif t == "fs0":
         return hm.Macro.Function(name, *args).Result
     elif t == "fsn":
@@ -770,7 +772,7 @@ def browsefile(*args): return _method_proxy("browsefile", "fs", *args);
 def quote(*args): return _method_proxy("quote", "fs", *args);
 def strreplace(*args): return _method_proxy("strreplace", "fs", *args);
 def getimecandidate(*args): return _method_proxy("getimecandidate", "fs", *args);
-def getdpi(): return 96;
+def getdpi(*args): return _method_proxy("getdpi", "fnfo", *args);
 
 # jsmodeには無いがpythonには必要
 def encodeuri(*args): return _method_proxy("encodeuri", "fs", *args);
