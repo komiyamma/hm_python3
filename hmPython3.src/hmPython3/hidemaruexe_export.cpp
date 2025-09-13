@@ -5,6 +5,7 @@
 
 #include <windows.h>
 #include <shlwapi.h>
+#include <memory>
 
 #include "hidemaruexe_export.h"
 
