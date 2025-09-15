@@ -1,5 +1,5 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 3.0.3.1用 フェイクライブラリ
+# hmPython3 3.1.3.1用 フェイクライブラリ
 # Copyright (c) 2017-2025 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
@@ -343,7 +343,7 @@ class _TOutputPane:
         return 1
 
     # アウトプット枠情報の一時退避したものを復元
-    def Push(self) -> int:
+    def Pop(self) -> int:
         return 1
 
     # アウトプット枠のクリア

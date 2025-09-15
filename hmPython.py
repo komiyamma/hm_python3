@@ -1,5 +1,5 @@
 #-------------------- coding: utf-8 ---------------------------
-# hmPython3 3.0.3.1用 ライブラリ
+# hmPython3 3.1.3.1用 ライブラリ
 # Copyright (c) 2017-2025 Akitsugu Komiyama
 # under the Apache License Version 2.0
 #--------------------------------------------------------------
@@ -429,7 +429,7 @@ class _TOutputPane:
         return hidemaru.outputpane.push()
 
     # アウトプット枠情報の一時退避したものを復元
-    def Push(self):
+    def Pop(self):
         return hidemaru.outputpane.pop()
 
     # アウトプット枠のクリア
